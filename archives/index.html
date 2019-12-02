@@ -346,27 +346,60 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >
+            
+                <span>web性能优化</span>
+        </a>
+        <div class="abstract-content">
+            
+参考1参考2
+
+
+答题思路：按照从输入url到加载页面的顺序思考，寻找可以优化的点
+量化web性能的工具：chrome检查工具，Audits选项1.DNS查询
+减少DNS查询，可以把资源放在一个域名下
+使用CDN(content distribute network, 内容分发网络)加速
+本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。
+
+2.建立TCP链接
+http请求头加keep-alive进行连接复用，减少TCP连接次数
+
+HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接；用Keep-Ali...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "前端面试">前端面试</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/Grit-Blog/2019/12/02/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >
             
                 <span>懒加载和预加载</span>
         </a>
         <div class="abstract-content">
             懒加载
-参考
+懒加载的实现
 
-懒加载概念
-懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式；
-用户滚动到它们之前，可视区域外的图像不会加载，可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。
-
-懒加载的优点
-能提升用户的体验，减少首屏加载时间
-减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担
-防止并发加载的资源过多会阻塞js的加载
-
-实现懒加载关于页面尺寸的补充知识
+预加载
+预加载的实现
 
 
-2.可视区高度：window.innerHeight/document.documentElement.clientHeight(document.docum...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -526,9 +559,18 @@ Mo...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 3
         </div>
         <!-- search  -->
         
@@ -544,7 +586,7 @@ Mo...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/hello-world/" >Hello World</a>
+            <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >web性能优化</a>
         </li>
     
     
@@ -552,10 +594,17 @@ Mo...
             <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
         </li>
     
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/hello-world/" >Hello World</a>
+        </li>
+    
     </div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="前端面试"><span class="iconfont-archer">&#xe606;</span>前端面试</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
