@@ -17,7 +17,7 @@
     <meta name="renderer" content="webkit">
     <meta name="copyright" content="Grit">
     
-    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="keywords" content="前端,博客,记录">
     
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -194,6 +194,21 @@
     <link rel="preload" as="font" href="/Grit-Blog/font/Oswald-Regular.ttf" crossorigin>
     <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
     
+        <!-- algolia -->
+        <script>
+            
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'L8YLEMD8T6',
+                apiKey: '0fe7f3cbd5ea61c59be85300bca3ebf5',
+                indexName: 'GritBlog',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
     <!-- fancybox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
@@ -346,36 +361,32 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >
+        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/Blog-markdown-%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" >
             
-                <span>web性能优化</span>
+                <span>Markdown 写作规范</span>
         </a>
         <div class="abstract-content">
             
-参考1参考2
 
+标题
+使用各级标题时需要注意该部分内容结束后需要换行1# 一级标题2内容34## 二级标题15内容67## 二级标题28内容
+博客会对各级标题进行自动分类展示在侧边，最好按级别使用各级标题，不要跳跃使用，标题前面也不要加数字说明
 
-答题思路：按照从输入url到加载页面的顺序思考，寻找可以优化的点
-量化web性能的工具：chrome检查工具，Audits选项1.DNS查询
-减少DNS查询，可以把资源放在一个域名下
-使用CDN(content distribute network, 内容分发网络)加速
-本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。
-
-2.建立TCP链接
-http请求头加keep-alive进行连接复用，减少TCP连接次数
-
-HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接；用Keep-Ali...
+图片
+可以使用Markdown格式的图片引用![img](url)
+推荐使用hexo博客的格式，可以指定图片的大小&lt;img src=&quot;url&quot; width=&quot;50%&quot; height=&quot;50%&quot;&gt;
+使用&lt;img&gt;引用图片请求可能得到403错误，需要在Markdown文档的Fr...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/02</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "前端面试">前端面试</a>
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "写作规范">写作规范</a>
     
 </div>
             
@@ -388,23 +399,37 @@ HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要�
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >
+        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >
             
-                <span>懒加载和预加载</span>
+                <span>异步和 Event Loop</span>
         </a>
         <div class="abstract-content">
-            懒加载
-懒加载的实现
+            
 
-预加载
-预加载的实现
+JS 同步与异步同步
+函数在返回的时候能够拿到执行结果
+
+异步
+函数返回的时候，暂时得不到结果，将来通过一定手段（例如回调函数）得到结果，例如AJAX操作，定时器，文件异步读取等
 
 
+
+单线程
+JavaScript是一门语言，单线程还是多线程由运行环境决定；在js的运行环境浏览器或者Node中js的执行是单线程的
+
+
+单线程是指js引擎中负责解析执行js代码的线程只有一个
+一个浏览器通常由以下几个常驻的线程：
+渲染引擎线程，负责页面的渲染
+js引擎线程，负责js的解析和执行
+定时触发器线程，处理setInterval和setTimeout
+事件触发线程，处理DOM事件
+异步http请...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/02</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
             </div>
             <!-- tags  -->
             
@@ -417,18 +442,67 @@ HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要�
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/hello-world/" >
+        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >
             
-                <span>Hello World</span>
+                <span>懒加载和预加载</span>
         </a>
         <div class="abstract-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
+            
 
-More info: Writing
-Run server1$ hexo server
+懒加载
+参考
 
-Mo...
+懒加载概念
+懒加载也叫延迟加载，指的是在长网页中延迟加载==图像==，是一种很好优化网页性能的方式；
+用户滚动到它们之前，可视区域外的图像不会加载，可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。
+
+懒加载的优点
+能提升用户的体验，减少首屏加载时间
+减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担
+防止并发加载的资源过多会阻塞js的加载
+
+实现懒加载关于页面尺寸的补充知识
+
+
+2.可视区高度：window.innerHeight/document.documentElement.clientHeight[document...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >
+            
+                <span>web性能优化</span>
+        </a>
+        <div class="abstract-content">
+            
+
+
+前端页面性能优化的几种方式页面性能优化办法有哪些？
+
+
+答题思路：按照从输入url到加载页面的顺序思考，寻找可以优化的点
+量化web性能的工具：chrome检查工具，Audits选项DNS查询
+减少DNS查询，可以把资源放在一个域名下
+使用CDN(content distribute network, 内容分发网络)加速
+本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。
+
+建立TCP链接
+http请求头加keep-alive进行连接复用，减少TCP连接次数
+
+HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要新建一个连接，完成之...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -520,13 +594,6 @@ Mo...
     </div>
     <!-- 不蒜子  -->
     
-    <div class="busuanzi-container">
-    
-     
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-    
-    </div>
-    
 </footer>
     </div>
     <!-- toc -->
@@ -568,11 +635,22 @@ Mo...
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 3
+        Total : 4
         </div>
         <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
         
     </div>
     
@@ -586,17 +664,22 @@ Mo...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/Blog-markdown-%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" >Markdown 写作规范</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >web性能优化</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/02</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/02/hello-world/" >Hello World</a>
         </li>
     
     </div>
@@ -604,7 +687,7 @@ Mo...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="前端面试"><span class="iconfont-archer">&#xe606;</span>前端面试</span>
+        <span class="sidebar-tag-name" data-tags="写作规范"><span class="iconfont-archer">&#xe606;</span>写作规范</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -639,7 +722,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="性能优化"><span class="iconfont-archer">&#xe60a;</span>性能优化</span>
+        <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
+    
+        <span class="sidebar-category-name" data-categories="web性能优化"><span class="iconfont-archer">&#xe60a;</span>面试/web性能优化</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
@@ -665,9 +750,30 @@ jsonContent:
     <script src="/Grit-Blog/scripts/main.js"></script>
     <!-- algolia -->
     
-    <!-- busuanzi  -->
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/Grit-Blog/scripts/search.js" defer></script>
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- busuanzi  -->
     
     <!-- CNZZ  -->
     

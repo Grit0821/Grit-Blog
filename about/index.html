@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Grit&#39;s World</title>
+    <title>Wubba lubba dub dub ! · Grit&#39;s World</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -218,6 +218,8 @@
 </head>
 
     
+        <body class="about-body">
+    
     
 <header class="header">
 
@@ -235,16 +237,22 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/Grit-Blog/)"></div>
+    <div class="site-intro-img" style="background-image: url(/Grit-Blog/intro/wp4.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Wubba lubba dub dub !
             
         </h1>
         <!-- 副标题 -->
@@ -353,169 +361,11 @@
 </script>        
         <img class="loading" src="/Grit-Blog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/Blog-markdown-%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" >
-            
-                <span>Markdown 写作规范</span>
-        </a>
-        <div class="abstract-content">
-            
-
-标题
-使用各级标题时需要注意该部分内容结束后需要换行1# 一级标题2内容34## 二级标题15内容67## 二级标题28内容
-博客会对各级标题进行自动分类展示在侧边，最好按级别使用各级标题，不要跳跃使用，标题前面也不要加数字说明
-
-图片
-可以使用Markdown格式的图片引用![img](url)
-推荐使用hexo博客的格式，可以指定图片的大小&lt;img src=&quot;url&quot; width=&quot;50%&quot; height=&quot;50%&quot;&gt;
-使用&lt;img&gt;引用图片请求可能得到403错误，需要在Markdown文档的Fr...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "写作规范">写作规范</a>
-    
-</div>
-            
-        </div>
+            <!-- 不可以删除，否则会调用post的layout  -->
+<main class="main about-page">
+    <article class="article-entry">
+        <h1 id="一个典型的狮子座"><a href="#一个典型的狮子座" class="headerlink" title="一个典型的狮子座"></a>一个典型的狮子座</h1><h2 id="在这方小小的天地记录自己的成长与感悟"><a href="#在这方小小的天地记录自己的成长与感悟" class="headerlink" title="在这方小小的天地记录自己的成长与感悟"></a>在这方小小的天地记录自己的成长与感悟</h2><h2 id="When-you-know-nothing-matters-the-universe-is-yours-…"><a href="#When-you-know-nothing-matters-the-universe-is-yours-…" class="headerlink" title="When you know nothing matters, the universe is yours …."></a>When you know nothing matters, the universe is yours ….</h2>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >
-            
-                <span>异步和 Event Loop</span>
-        </a>
-        <div class="abstract-content">
-            
-
-JS 同步与异步同步
-函数在返回的时候能够拿到执行结果
-
-异步
-函数返回的时候，暂时得不到结果，将来通过一定手段（例如回调函数）得到结果，例如AJAX操作，定时器，文件异步读取等
-
-
-
-单线程
-JavaScript是一门语言，单线程还是多线程由运行环境决定；在js的运行环境浏览器或者Node中js的执行是单线程的
-
-
-单线程是指js引擎中负责解析执行js代码的线程只有一个
-一个浏览器通常由以下几个常驻的线程：
-渲染引擎线程，负责页面的渲染
-js引擎线程，负责js的解析和执行
-定时触发器线程，处理setInterval和setTimeout
-事件触发线程，处理DOM事件
-异步http请...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >
-            
-                <span>懒加载和预加载</span>
-        </a>
-        <div class="abstract-content">
-            
-
-懒加载
-参考
-
-懒加载概念
-懒加载也叫延迟加载，指的是在长网页中延迟加载==图像==，是一种很好优化网页性能的方式；
-用户滚动到它们之前，可视区域外的图像不会加载，可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。
-
-懒加载的优点
-能提升用户的体验，减少首屏加载时间
-减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担
-防止并发加载的资源过多会阻塞js的加载
-
-实现懒加载关于页面尺寸的补充知识
-
-
-2.可视区高度：window.innerHeight/document.documentElement.clientHeight[document...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >
-            
-                <span>web性能优化</span>
-        </a>
-        <div class="abstract-content">
-            
-
-
-前端页面性能优化的几种方式页面性能优化办法有哪些？
-
-
-答题思路：按照从输入url到加载页面的顺序思考，寻找可以优化的点
-量化web性能的工具：chrome检查工具，Audits选项DNS查询
-减少DNS查询，可以把资源放在一个域名下
-使用CDN(content distribute network, 内容分发网络)加速
-本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。
-
-建立TCP链接
-http请求头加keep-alive进行连接复用，减少TCP连接次数
-
-HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要新建一个连接，完成之...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/02</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    <!-- paginator  -->
-    
 </main>
             <!-- profile -->
             
