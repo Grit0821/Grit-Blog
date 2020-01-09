@@ -281,7 +281,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">827</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">864</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,58 +406,57 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <meta name="referrer" content="no-referrer" />
+: ) 加这行是因为不加第一个h1标题不渲染，我也不造为啥
 
-<blockquote>
 <p><a href="https://www.cnblogs.com/qianguyihao/p/8550195.html" target="_blank" rel="noopener">前端页面性能优化的几种方式</a><br><a href="https://juejin.im/post/5b022bdf518825426d2d69fe" target="_blank" rel="noopener">页面性能优化办法有哪些？</a></p>
-</blockquote>
+<p>答题思路：按照从输入 url 到加载页面的顺序思考，寻找可以优化的点</p>
+<p>量化web性能的工具：chrome 检查工具，Audits 选项</p>
+<h2 id="DNS-查询"><a href="#DNS-查询" class="headerlink" title="DNS 查询"></a>DNS 查询</h2><p>减少 DNS 查询，可以把资源放在一个域名下</p>
+<p>使用 CDN (content distribute network, 内容分发网络)加速</p>
 <ul>
-<li>答题思路：按照从输入url到加载页面的顺序思考，寻找可以优化的点</li>
-<li>量化web性能的工具：chrome检查工具，Audits选项<h2 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h2></li>
-<li>减少DNS查询，可以把资源放在一个域名下</li>
-<li>使用CDN(content distribute network, 内容分发网络)加速<blockquote>
-<p>本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。</p>
-</blockquote>
-<h2 id="建立TCP链接"><a href="#建立TCP链接" class="headerlink" title="建立TCP链接"></a>建立TCP链接</h2></li>
-<li>http请求头加<code>keep-alive</code>进行连接复用，减少TCP连接次数<blockquote>
-<ol>
-<li>HTTP 1.0 默认非KeepAlive模式，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接；用Keep-Alive模式（连接重用）时，HTTP请求头中添加一个字段 Connection: Keep-Alive，服务器也会在响应头中添加一个同样的字段来使用Keep-Alive。Keep-Alive功能使客户端到服务器端的连接持续有效，出现后继请求时，能避免了重新建立连接。</li>
-<li>HTTP 1.1 默认启用Keep-Alive,除非在请求头或响应头中指明要关闭：Connection: Close<br><a href="https://zhuanlan.zhihu.com/p/34052073" target="_blank" rel="noopener">keep-alive</a></li>
-</ol>
-</blockquote>
-</li>
-<li>HTTP 2.0 多路复用<blockquote>
-<p>多路复用（MultiPlexing），即连接共享，即每一个request都是是用作连接共享机制的。一个request对应一个id，这样一个连接上可以有多个request，每个连接的request可以随机的混杂在一起，接收方可以根据request的 id将request再归属到各自不同的服务端请求里面。</p>
-</blockquote>
-<h2 id="发送HTTP请求"><a href="#发送HTTP请求" class="headerlink" title="发送HTTP请求"></a>发送HTTP请求</h2></li>
-<li>减少http请求，合理设置http缓存<ul>
-<li>合并CSS, 合并JavaScript, 合并图片等.将浏览器一次需要的这些文件合并成一个, 那么就只需要一次请求了.</li>
-<li>使用http头中的cache-control和expiress属性可以设定浏览器强缓存</li>
+<li>本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。</li>
 </ul>
+<h2 id="建立-TCP-链接"><a href="#建立-TCP-链接" class="headerlink" title="建立 TCP 链接"></a>建立 TCP 链接</h2><p>http 请求头加 keep-alive 进行连接复用，减少 TCP 连接次数</p>
+<ul>
+<li><p>HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接；用   Keep-Alive 模式（连接重用）时，HTTP 请求头中添加一个字段 Connection: Keep-Alive，服务器也会在响应头中添加一个同样的字段来使用 Keep-Alive。Keep-Alive 功能使客户端到服务器端的连接持续有效，出现后继请求时，能避免了重新建立连接。</p>
 </li>
-<li>减小cookie<blockquote>
-<p>cookie包含在每次请求和响应中, 太大的cookie回严重影响数据传输</p>
-</blockquote>
-<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2></li>
-<li>压缩html, css, js等文件</li>
-<li>通过设置协商缓存，接收响应304,使用缓存资源</li>
-<li>服务端采用Gzip压缩，客户端接收压缩资源再解压<h2 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h2></li>
-<li>CSS放在顶部<head>中<blockquote>
-<p>文件逐行解析，遇到标签构建dom，但不渲染，只有CSS全部下载，解析完毕才开始渲染dom</p>
-</blockquote>
+<li><p>HTTP 1.1 默认启用 Keep-Alive ,除非在请求头或响应头中指明要关闭：Connection: Close </p>
 </li>
-<li>JS放在<body>底部，或者使用异步脚本或延迟脚本（不会阻塞DOM渲染）<blockquote>
-<p>加载JS会立即执行，会阻塞dom渲染，并且js放在底部可以拿到之前的节点</p>
-</blockquote>
+<li><p><a href="https://zhuanlan.zhihu.com/p/34052073" target="_blank" rel="noopener">keep-alive</a></p>
 </li>
-<li>懒加载<ul>
+</ul>
+<p>HTTP 2.0 多路复用</p>
+<ul>
+<li>多路复用（MultiPlexing），即连接共享，即每一个 request 都是是用作连接共享机制的。一个 request 对应一个 id ，这样一个连接上可以有多个 request，每个连接的 request 可以随机的混杂在一起，接收方可以根据 request 的 id 将 request 再归属到各自不同的服务端请求里面。</li>
+</ul>
+<h2 id="发送HTTP请求"><a href="#发送HTTP请求" class="headerlink" title="发送HTTP请求"></a>发送HTTP请求</h2><p>减少http请求，合理设置http缓存</p>
+<ul>
+<li>合并 CSS , 合并 JavaScript , 合并图片等.将浏览器一次需要的这些文件合并成一个, 那么就只需要一次请求了.</li>
+<li>使用 http 头中的 cache-control 和 expiress 属性可以设定浏览器强缓存</li>
+</ul>
+<p>减小cookie</p>
+<ul>
+<li>cookie 包含在每次请求和响应中, 太大的 cookie 回严重影响数据传输</li>
+</ul>
+<h2 id="接收响应"><a href="#接收响应" class="headerlink" title="接收响应"></a>接收响应</h2><p>压缩 html ,  css , js 等文件</p>
+<p>通过设置协商缓存，接收响应 304 ,使用缓存资源</p>
+<p>服务端采用 Gzip 压缩，客户端接收压缩资源再解压</p>
+<h2 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h2><p>CSS放在顶部<code>&lt;head&gt;</code>中</p>
+<ul>
+<li>文件逐行解析，遇到标签构建 dom ，但不渲染，只有 CSS 全部下载，解析完毕才开始渲染 dom</li>
+</ul>
+<p>JS放在<code>&lt;body&gt;</code>底部，或者使用异步脚本或延迟脚本（不会阻塞 DOM 渲染）</p>
+<ul>
+<li>加载 JS 会立即执行，会阻塞 dom 渲染，并且 js 放在底部可以拿到之前的节点</li>
+</ul>
+<p>懒加载</p>
+<ul>
 <li>减少首屏加载时间，减少无效资源的加载</li>
-<li>将页面上的图片的<code>src</code>属性设为空字符串，而图片的真实路径则设置在<code>data-src</code>属性中， 当页面滚动的时候需要去监听<code>scroll</code>事件，在<code>scroll</code>事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的<code>src</code>属性设置为<code>data-src</code> 的值，这样就可以实现延迟加载。</li>
+<li>将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在 data-src 属性中， 当页面滚动的时候需要去监听 scroll 事件，在 scroll 事件的回调中，判断我们的懒加载的图片是否进入可视区域,如果图片在可视区内将图片的 src 属性设置为 data-src 的值，这样就可以实现延迟加载。</li>
 </ul>
-</li>
-<li>预加载<ul>
+<p>预加载</p>
+<ul>
 <li>提前加载需要的资源，比如浏览第一页内容时，提前加载第二页的页面资源</li>
-</ul>
-</li>
 </ul>
 
     </article>
@@ -467,7 +466,7 @@ height:50vh;
             <p>Author：<a href="https://github.com/Grit0821/Grit-Blog">Grit</a>
             <p>原文链接：<a href="https://github.com/Grit0821/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">https://github.com/Grit0821/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</a>
             <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">December 2nd 2019, 9:43:18 pm</a>
-            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">December 4th 2019, 8:17:48 pm</a>
+            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">January 9th 2020, 10:13:29 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -612,7 +611,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS查询"><span class="toc-number">1.</span> <span class="toc-text">DNS查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立TCP链接"><span class="toc-number">2.</span> <span class="toc-text">建立TCP链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送HTTP请求"><span class="toc-number">3.</span> <span class="toc-text">发送HTTP请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接收响应"><span class="toc-number">4.</span> <span class="toc-text">接收响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面优化"><span class="toc-number">5.</span> <span class="toc-text">页面优化</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-查询"><span class="toc-number">1.</span> <span class="toc-text">DNS 查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立-TCP-链接"><span class="toc-number">2.</span> <span class="toc-text">建立 TCP 链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送HTTP请求"><span class="toc-number">3.</span> <span class="toc-text">发送HTTP请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接收响应"><span class="toc-number">4.</span> <span class="toc-text">接收响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面优化"><span class="toc-number">5.</span> <span class="toc-text">页面优化</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -663,9 +662,16 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 4
+        Total : 5
         </div>
         <!-- search  -->
         
@@ -682,6 +688,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/09/npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" >npm包管理工具</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -719,6 +730,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="写作规范"><span class="iconfont-archer">&#xe606;</span>写作规范</span>
     
+        <span class="sidebar-tag-name" data-tags="npm/Yarn使用"><span class="iconfont-archer">&#xe606;</span>npm/Yarn使用</span>
+    
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -751,6 +764,8 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
         <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
     
