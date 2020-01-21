@@ -361,6 +361,100 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
+            
+                <span>webpack 简单配置</span>
+        </a>
+        <div class="abstract-content">
+            
+
+单页应用单页，只有一个 index.html
+src 文件下 index.js 引入了 a.js 模块，另外还有一个 b.js，将 index.js 和 a.js 作为入口打包成一个文件 build.js 引入页面内
+1// webpack.config.js2let path  = require('path')3let HtmlWebpackPlugin = require('html-webpack-plugin')4let &#123;CleanWebpackPlugin&#125; = require('clean-webpack-plugin')56module.expo...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >
+            
+                <span>webpack 入门</span>
+        </a>
+        <div class="abstract-content">
+            
+
+概念webpack 是一个基于 NodeJS 开发的静态模块打包工具，
+当 webpack 处理应用程序时，它会递归地构建一个依赖关系图( dependency graph )，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle
+代码构建是前端工程化，自动化的体现，把一系列的构建流程由代码去自动实现，提高生产效率，包括如下内容：
+
+代码转换：TS 编译 JS ，SCSS 编译 CSS 等
+文件优化：压缩 js , css , html, 压缩合并图片等
+代码分割：提取多个页面的公共代码，提取首屏不需要执行的代码让其异步加载
+模块合并
+自动刷新：监听本地源...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >
+            
+                <span>CommonJS规范和ES6模块规范</span>
+        </a>
+        <div class="abstract-content">
+            
+
+CommonJS规范Node 应用由模块组成，采用 CommonJS 规范
+导出模块采用module.exports,module.exports是一个对象，也是导出的接口
+导入模块采用require引入这个对象
+导出模块1// example.js2let x = 53var addX = function(value)&#123;4    return x + value5&#125;
+
+导出 example.js 中的模块
+1module.exports.x = x2module.exports.addX = addX
+
+或者采用解构赋值
+1module.exports = &...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/Grit-Blog/2020/01/09/npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" >
             
                 <span>npm包管理工具</span>
@@ -583,9 +677,38 @@ updated...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 5
+        Total : 8
         </div>
         <!-- search  -->
         
@@ -602,6 +725,21 @@ updated...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >webpack 入门</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -624,12 +762,12 @@ updated...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
         </li>
     
     
@@ -642,9 +780,9 @@ updated...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="写作规范"><span class="iconfont-archer">&#xe606;</span>写作规范</span>
-    
         <span class="sidebar-tag-name" data-tags="npm/Yarn使用"><span class="iconfont-archer">&#xe606;</span>npm/Yarn使用</span>
+    
+        <span class="sidebar-tag-name" data-tags="写作规范"><span class="iconfont-archer">&#xe606;</span>写作规范</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -679,9 +817,13 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
+        <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
+    
         <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
         <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
+    
+        <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
     
         <span class="sidebar-category-name" data-categories="web性能优化"><span class="iconfont-archer">&#xe60a;</span>面试/web性能优化</span>
     
