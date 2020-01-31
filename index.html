@@ -380,14 +380,13 @@ height:50vh;
         </a>
         <div class="abstract-content">
             
-
-
 三种引入图片的方式：
+
 1在 js 中创建 Image 实例引入把图片当做模块引入
 1import logo from "./logo.png"2let img = new Image()3img.src = 'logo'4document.body.appendChild(img)
 
 使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字
-1&#123;2  module: &#123;3    rules: [4      &#123;5        test: /\.(png|jpg|gif)$/,6        use: &#123...
+1&#123;2  test: /\.(png|jpg)$/,3  use: [4    &#123;5      loader: 'file-loader',6      options: &#123;7 ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -891,14 +890,6 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
