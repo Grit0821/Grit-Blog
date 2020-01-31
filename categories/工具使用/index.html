@@ -361,6 +361,37 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >
+            
+                <span>webpack 图片处理</span>
+        </a>
+        <div class="abstract-content">
+            
+
+
+三种引入图片的方式：
+1在 js 中创建 Image 实例引入把图片当做模块引入
+1import logo from "./logo.png"2let img = new Image()3img.src = 'logo'4document.body.appendChild(img)
+
+使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字
+1&#123;2  module: &#123;3    rules: [4      &#123;5        test: /\.(png|jpg|gif)$/,6        use: &#123...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/31</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
             
                 <span>webpack 简单配置</span>
@@ -685,9 +716,26 @@ c...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 8
+        Total : 9
         </div>
         <!-- search  -->
         
@@ -704,6 +752,11 @@ c...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >webpack 图片处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -800,9 +853,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
-        <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
-    
         <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
+    
+        <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
     
         <span class="sidebar-category-name" data-categories="web性能优化"><span class="iconfont-archer">&#xe60a;</span>面试/web性能优化</span>
     

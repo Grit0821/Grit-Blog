@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Grit&#39;s World</title>
+    <title>webpack 图片处理 · Grit&#39;s World</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -77,6 +77,8 @@
 
     <link rel="preload" href= "/Grit-Blog/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= "/Grit-Blog/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -216,14 +218,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/Grit-Blog/" >Grit&#39;s World</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">webpack 图片处理</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/Grit-Blog/>Grit's World</a>
 </header>
@@ -242,17 +253,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/Grit-Blog/intro/wp1.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/Grit-Blog/intro/wp2.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Grit's World
-            <!-- 文章页  -->
+            webpack 图片处理
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -260,12 +271,38 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                When you know nothing matters, the universe is yours ....
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">411</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/01/31</span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -366,441 +403,94 @@ height:50vh;
 </script>        
         <img class="loading" src="/Grit-Blog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >
-            
-                <span>webpack 图片处理</span>
-        </a>
-        <div class="abstract-content">
-            
+            <main class="main post-page">
+    <article class="article-entry">
+        <meta name="referrer" content="no-referrer" />
 
 
-三种引入图片的方式：
-1在 js 中创建 Image 实例引入把图片当做模块引入
-1import logo from "./logo.png"2let img = new Image()3img.src = 'logo'4document.body.appendChild(img)
+<p>三种引入图片的方式：</p>
+<h2 id="1在-js-中创建-Image-实例引入"><a href="#1在-js-中创建-Image-实例引入" class="headerlink" title="1在 js 中创建 Image 实例引入"></a>1在 js 中创建 Image 实例引入</h2><p>把图片当做模块引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">"./logo.png"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">img.src = <span class="string">'logo'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.appendChild(img)</span></pre></td></tr></table></figure>
 
-使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字
-1&#123;2  module: &#123;3    rules: [4      &#123;5        test: /\.(png|jpg|gif)$/,6        use: &#123...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/31</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
+<p>使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">module</span>: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    rules: [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">      &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        use: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">          loader: <span class="string">"file-loader"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+
+<h2 id="2在-css-中引入-background-url"><a href="#2在-css-中引入-background-url" class="headerlink" title="2在 css 中引入 background: url( )"></a>2在 css 中引入 background: url( )</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(./logo.png)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>然后把 css 文件当做模块引入到入口文件 index.js，import css 文件时候自动调用 file-loader</p>
+<h2 id="3HTML-lt-img-src-quot-quot-alt-quot-quot-gt-引入"><a href="#3HTML-lt-img-src-quot-quot-alt-quot-quot-gt-引入" class="headerlink" title="3HTML &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;引入"></a>3HTML <code>&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;</code>引入</h2><p> HTML<code>&lt;img src=&quot;./log.png&quot;&gt;</code>直接打包的话由于不是模块引入，build 中的 src 路径是错误的</p>
+<p>同时使用 html-withimg-loader 和 file-loader 改变 build 后<code>&lt;img&gt;</code>的 src</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/\.html$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  use: <span class="string">'html-withimg-loader'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;, </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/.(png|jpg|gif)$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  use: [&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    loader: <span class="string">'file-loader'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    options: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      esModule: <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">  &#125;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用-url-loader-处理图片，前两种引入方式都适用"><a href="#使用-url-loader-处理图片，前两种引入方式都适用" class="headerlink" title="使用 url-loader 处理图片，前两种引入方式都适用"></a>使用 url-loader 处理图片，前两种引入方式都适用</h2><p>处理图片经常使用 url-loader，当我们的图片小于多少 k 的时候，用 base 64 来转化，否则使用 file-loader 产生真实的图片</p>
+<p>base64 编码可以将一张图片编码成字符串，编码后大小略有增加，但可以减少 http 请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  use: [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">      loader: <span class="string">'url-loader'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">      options: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        limit: <span class="number">1</span>, <span class="comment">// 超过大小限制使用 file-loader</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        outputPath: <span class="string">'./img/'</span>, <span class="comment">// 设置公共输出路径</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        esModule: <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">  ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.im/post/5d90cb2c6fb9a04e31420541#heading-9" target="_blank" rel="noopener">webpack loader 从上手到理解系列：url-loader</a></p>
+
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
-            
-                <span>webpack 简单配置</span>
-        </a>
-        <div class="abstract-content">
-            
-
-单页应用单页，只有一个 index.html
-src 文件下 index.js 引入了 a.js 模块，另外还有一个 b.js，将 index.js 和 a.js 作为入口打包成一个文件 build.js 引入页面内
-1// webpack.config.js2let path  = require('path')3let HtmlWebpackPlugin = require('html-webpack-plugin')4let &#123;CleanWebpackPlugin&#125; = require('clean-webpack-plugin')56module.expo...
+        <div class="license-wrapper">
+            <p>Author：<a href="https://github.com/Grit0821/Grit-Blog">Grit</a>
+            <p>原文链接：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/</a>
+            <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">January 31st 2020, 11:43:34 am</a>
+            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">January 31st 2020, 12:15:30 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >
-            
-                <span>webpack 入门</span>
-        </a>
-        <div class="abstract-content">
-            
--
-
-概念webpack 是一个基于 NodeJS 开发的静态模块打包工具，
-当 webpack 处理应用程序时，它会递归地构建一个依赖关系图( dependency graph )，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle
-代码构建是前端工程化，自动化的体现，把一系列的构建流程由代码去自动实现，提高生产效率，包括如下内容：
-
-代码转换：TS 编译 JS ，SCSS 编译 CSS 等
-文件优化：压缩 js , css , html, 压缩合并图片等
-代码分割：提取多个页面的公共代码，提取首屏不需要执行的代码让其异步加载
-模块合并
-自动刷新：监听本...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >
-            
-                <span>CommonJS规范和ES6模块规范</span>
-        </a>
-        <div class="abstract-content">
-            
-
-CommonJS规范Node 应用由模块组成，采用 CommonJS 规范
-导出模块采用module.exports,module.exports是一个对象，也是导出的接口
-导入模块采用require引入这个对象
-导出模块1// example.js2let x = 53var addX = function(value)&#123;4    return x + value5&#125;
-
-导出 example.js 中的模块
-1module.exports.x = x2module.exports.addX = addX
-
-或者采用解构赋值
-1module.exports = &...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/09/npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" >
-            
-                <span>npm包管理工具</span>
-        </a>
-        <div class="abstract-content">
-            
--
-
-npm 介绍什么是 npmnpm 全称 Node Package Manager，是使用 Node.js 写的包管理工具，可以让 JavaScript 开发者分享，复用代码更加方便：
-在程序开发中我们常常需要依赖别人提供的框架，写 js 也不例外。这些可以重复的框架代码被称作包（package）或者模块（module），一个包可以是一个文件夹里放着几个文件，同时有一个叫做 package.json 的文件。
-当我们想要使用开源的 package 时，使用npm install module-name进行下载，下载的代码出现在 node_modules 目录中，我们就可以在本地使用...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "npm/Yarn使用">npm/Yarn使用</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/08/hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%86%99%E4%BD%9C/" >
-            
-                <span>hexo博客使用与写作</span>
-        </a>
-        <div class="abstract-content">
-            
--
-
-创建博客1hexo new "title"
-
-创建一个 title.md 文件，在博客目录 source/_posts 下
-设置Front-matterFront-matter 是文件最上方以 ---分隔的区域，用于指定此文件的变量
-1---2title: web性能优化3date: 2019-12-02 21:43:184categories: 5- 面试6- web性能优化7tags:8- 前端9---
-
-表示分类为面试/web性能优化
-
-
-
-参数
-描述
-
-
-
-title
-标题
-
-
-date
-建立日期
-
-
-updated
-更新日期
-
-
-tags
-标签，没有顺序和层次性
-
-
-c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "写作规范">写作规范</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >
-            
-                <span>异步和 Event Loop</span>
-        </a>
-        <div class="abstract-content">
-            
--
-
-JS 同步与异步同步函数在返回的时候能够拿到执行结果
-异步函数返回的时候，暂时得不到结果，将来通过一定手段（例如回调函数）得到结果，例如 AJAX 操作，定时器，文件异步读取等
-单线程JavaScript 是一门语言，单线程还是多线程由运行环境决定；在 js 的运行环境浏览器或者 Node 中 js 的执行是单线程的
-单线程是指 js 引擎中负责解析执行 js 代码的线程只有一个
-一个浏览器通常由以下几个常驻的线程：
-
-渲染引擎线程，负责页面的渲染
-js 引擎线程，负责 js 的解析和执行
-定时触发器线程，处理 setInterval 和 setTimeout 
-事件触发线程，处...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >
-            
-                <span>懒加载和预加载</span>
-        </a>
-        <div class="abstract-content">
-            
--
-
-懒加载延迟加载的三种方式
-懒加载概念懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式；
-用户滚动到它们之前，可视区域外的图像不会加载，可以帮助减少服务器负载。常适用图片很多，页面很长的电商网站场景中。
-懒加载的优点能提升用户的体验，减少首屏加载时间
-减少无效资源的加载，这样能明显减少了服务器的压力和流量，也能够减小浏览器的负担
-防止并发加载的资源过多会阻塞js的加载
-实现懒加载关于页面尺寸的补充知识
-
-可视区高度：window.innerHeight / document.documentElement.clientHeight（document.d...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2019/12/02/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" >
-            
-                <span>web性能优化</span>
-        </a>
-        <div class="abstract-content">
-            
-
-
-前端页面性能优化的几种方式页面性能优化办法有哪些？
-答题思路：按照从输入 url 到加载页面的顺序思考，寻找可以优化的点
-量化web性能的工具：chrome 检查工具，Audits 选项
-DNS 查询减少 DNS 查询，可以把资源放在一个域名下
-使用 CDN (content distribute network, 内容分发网络)加速
-
-本质是一种缓存，将数据缓存在离用户最近的地方，使得用户以最快速度获取数据。
-
-建立 TCP 链接http 请求头加 keep-alive 进行连接复用，减少 TCP 连接次数
-
-HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/02</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" title= "webpack 简单配置">
+                    <div class="prevTitle">webpack 简单配置</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "nB0MdPlGzfvoOceJomv3EKTE-gzGzoHsz",
+        appKey: "U74OLDPeHedzXJjQlAQE2Dcy",
+        placeholder: "commit your comment",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /Grit-Blog/avatar/rick1.jpg >
-    <div class="profile-name">Grit</div>
-    
-    <div class="profile-signature">
-        ALL IN THE GAME
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:wangyi95821@gmail.com" target="_blank" rel="noopener" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Grit0821" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/Grit-Blog/assets/wechat.JPG" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="//www.zhihu.com/people/wang-yi-60-59-4/activities" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.baidu.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/Grit-Blog/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
@@ -880,6 +570,24 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1在-js-中创建-Image-实例引入"><span class="toc-number">1.</span> <span class="toc-text">1在 js 中创建 Image 实例引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2在-css-中引入-background-url"><span class="toc-number">2.</span> <span class="toc-text">2在 css 中引入 background: url( )</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3HTML-lt-img-src-quot-quot-alt-quot-quot-gt-引入"><span class="toc-number">3.</span> <span class="toc-text">3HTML &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-url-loader-处理图片，前两种引入方式都适用"><span class="toc-number">4.</span> <span class="toc-text">使用 url-loader 处理图片，前两种引入方式都适用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1165,6 +873,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/Grit-Blog/scripts/share.js" async></script>    
      
     </body>
 </html>
