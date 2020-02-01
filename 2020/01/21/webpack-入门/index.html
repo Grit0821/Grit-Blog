@@ -281,7 +281,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.2k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.4k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,7 +406,6 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <meta name="referrer" content="no-referrer" />
--
 
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>webpack 是一个基于 NodeJS 开发的静态模块打包工具，</p>
 <p>当 webpack 处理应用程序时，它会递归地构建一个依赖关系图( dependency graph )，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle</p>
@@ -456,8 +455,19 @@ height:50vh;
 <p>插件一般是 Class ，使用一个插件需要安装后 require 引入，使用 new 操作符创建一个自定义实例（可以传参 option），然后添加到配置文件的 plugins 数组中</p>
 <p>常用插件：</p>
 <ol>
-<li><p>HtmlWebpackPlugin : 将 html 打包到 build 文件夹下，并且可以引入打包的 js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> webpack = <span class="built_in">require</span>(<span class="string">'wepack'</span>) <span class="comment">// 引入 webpack 内部插件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>) <span class="comment">// 安装插件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    plugins:[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            template: <span class="string">'./src/index.html'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            hash: ture,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            minify:&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                removeAttributeQuotes: <span class="literal">true</span>, <span class="comment">// 删除双引号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                collapseWhitespace: <span class="literal">true</span>, <span class="comment">// 删除空格</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        &#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<li><p>html-webpack-plugin: 将 html 打包到 build 文件夹下，并且可以引入打包的 js</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> webpack = <span class="built_in">require</span>(<span class="string">'wepack'</span>) <span class="comment">// 引入 webpack 内部插件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>) <span class="comment">// 安装插件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    plugins:[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            template: <span class="string">'./src/index.html'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            hash: ture,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            filename: <span class="string">'index.html'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            minify:&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                removeAttributeQuotes: <span class="literal">true</span>, <span class="comment">// 删除双引号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                collapseWhitespace: <span class="literal">true</span>, <span class="comment">// 删除空格</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        &#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+</li>
+<li><p>clean-webpack-plugin: 每次打包时清空打包目录文件夹，避免文件堆叠</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  plugins:[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin([<span class="string">'./dist'</span>])<span class="comment">// 可以不写，默认打包目录；也可以用字符串或者数组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+</li>
+<li><p>copy-webpack-plugin: 拷贝文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> CopyWebpackPlugin = <span class="built_in">require</span>(<span class="string">'copy-webpack-plugin'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  plugins:[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">new</span> CopyWebpackPlugin([ <span class="comment">// 多个拷贝参数设置数组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">      &#123;<span class="attr">from</span>: <span class="string">'./doc'</span>,<span class="attr">to</span>: <span class="string">'./'</span>&#125; <span class="comment">// 拷贝到打包目录dist</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    ]), </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+</li>
+<li><p>webpack.BannerPlugin (webpack 内置插件) : 在打包的文件开头添加注释声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">new</span> webpack.BannerPlugin(<span class="string">'make 2020 by wy'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
 
 </li>
 </ol>
@@ -477,6 +487,9 @@ height:50vh;
 <li>open : 项目启动后自动打开浏览器</li>
 <li>hot : 启动热更行，可以不刷新页面更新代码</li>
 </ul>
+<h2 id="watch-监控打包"><a href="#watch-监控打包" class="headerlink" title="watch 监控打包"></a>watch 监控打包</h2><p>配置 watch 和 watchOptions 可以开启实时监控打包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  watch: <span class="literal">true</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  watchOptions: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    poll: <span class="number">1000</span> , <span class="comment">// 每秒询问1000次</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    aggregateTimeout: <span class="number">500</span>, <span class="comment">// 防抖500ms</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    ignored: <span class="regexp">/node_modules/</span> <span class="comment">// 忽略监控的文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
 
     </article>
     <!-- license  -->
@@ -484,8 +497,8 @@ height:50vh;
         <div class="license-wrapper">
             <p>Author：<a href="https://github.com/Grit0821/Grit-Blog">Grit</a>
             <p>原文链接：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/">https://github.com/Grit0821/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/</a>
-            <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/">January 21st 2020, 4:40:34 pm</a>
-            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/">January 23rd 2020, 12:07:20 pm</a>
+            <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/">January 21st 2020, 4:40:59 pm</a>
+            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/">February 1st 2020, 4:54:01 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -494,16 +507,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" title= "webpack 简单配置">
-                    <div class="nextTitle">webpack 简单配置</div>
+                <a href= "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" title= "webpack 图片处理">
+                    <div class="nextTitle">webpack 图片处理</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" title= "CommonJS规范和ES6模块规范">
-                    <div class="prevTitle">CommonJS规范和ES6模块规范</div>
+                <a href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" title= "webpack 简单配置">
+                    <div class="prevTitle">webpack 简单配置</div>
                 </a>
             
         </li>
@@ -635,7 +648,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-webpack"><span class="toc-number">2.</span> <span class="toc-text">安装 webpack</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack-config-js-配置"><span class="toc-number">3.</span> <span class="toc-text">webpack.config.js 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#入口（entry）"><span class="toc-number">3.1.</span> <span class="toc-text">入口（entry）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出口（output）"><span class="toc-number">3.2.</span> <span class="toc-text">出口（output）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式（mode）"><span class="toc-number">3.3.</span> <span class="toc-text">模式（mode）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loader"><span class="toc-number">3.4.</span> <span class="toc-text">loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块（module）"><span class="toc-number">3.5.</span> <span class="toc-text">模块（module）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件（plugins）"><span class="toc-number">3.6.</span> <span class="toc-text">插件（plugins）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dev-server"><span class="toc-number">3.7.</span> <span class="toc-text">dev-server</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-webpack"><span class="toc-number">2.</span> <span class="toc-text">安装 webpack</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack-config-js-配置"><span class="toc-number">3.</span> <span class="toc-text">webpack.config.js 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#入口（entry）"><span class="toc-number">3.1.</span> <span class="toc-text">入口（entry）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出口（output）"><span class="toc-number">3.2.</span> <span class="toc-text">出口（output）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式（mode）"><span class="toc-number">3.3.</span> <span class="toc-text">模式（mode）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loader"><span class="toc-number">3.4.</span> <span class="toc-text">loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块（module）"><span class="toc-number">3.5.</span> <span class="toc-text">模块（module）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件（plugins）"><span class="toc-number">3.6.</span> <span class="toc-text">插件（plugins）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dev-server"><span class="toc-number">3.7.</span> <span class="toc-text">dev-server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watch-监控打包"><span class="toc-number">3.8.</span> <span class="toc-text">watch 监控打包</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -648,6 +661,12 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
@@ -762,17 +781,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >webpack 入门</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
         </li>
     
     
@@ -851,11 +870,11 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
-    
         <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
         <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
+    
+        <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
     
         <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
     
