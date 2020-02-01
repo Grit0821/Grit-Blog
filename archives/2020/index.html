@@ -361,6 +361,40 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" >
+            
+                <span>webpack 解决跨域问题</span>
+        </a>
+        <div class="abstract-content">
+            
+
+跨域问题基于浏览器的同源策略，即协议，域名，端口都一致浏览器才能发送请求，而服务端发送请求没有跨域的问题
+使用 webpack 进行开发解决跨域问题主要有以下方法：
+通过配置服务器代理不能操控后端代码时（比如前后端联调）可用
+在配置文件 webpack.config.js 中添加  devServer 配置，然后配置它的 proxy 属性，webpack-dev-server 在起服务后，会把匹配的本地请求转到  proxy 里配置的服务器上去请求，通过服务端的转发，实现跨域
+例如：
+
+前端服务端口（dev-server）8080
+联调的后端端口：3000
+
+如果在前端发送请求xhr...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/01</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >
             
                 <span>webpack 图片处理</span>
@@ -763,9 +797,26 @@ c...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 9
+        Total : 10
         </div>
         <!-- search  -->
         
@@ -785,12 +836,12 @@ c...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >webpack 图片处理</a>
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" >webpack 解决跨域问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >webpack 图片处理</a>
         </li>
     
     
@@ -801,6 +852,11 @@ c...
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >webpack 入门</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
         </li>
     
     
@@ -879,11 +935,11 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
+        <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
+    
         <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
         <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
-    
-        <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
     
         <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
     
