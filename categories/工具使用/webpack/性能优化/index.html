@@ -78,6 +78,8 @@
     <link rel="preload" href= "/Grit-Blog/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= "/Grit-Blog/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -216,10 +218,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -235,34 +235,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/Grit-Blog/intro/wp1.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/Grit-Blog/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Grit's World
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                When you know nothing matters, the universe is yours ....
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -575,212 +562,10 @@ loader 解析时排除和...
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" >
-            
-                <span>webpack 解决跨域问题</span>
-        </a>
-        <div class="abstract-content">
-            
-
-跨域问题基于浏览器的同源策略，即协议，域名，端口都一致浏览器才能发送请求，而服务端发送请求没有跨域的问题
-使用 webpack 进行开发解决跨域问题主要有以下方法：
-通过配置服务器代理不能操控后端代码时（比如前后端联调）可用
-在配置文件 webpack.config.js 中添加  devServer 配置，然后配置它的 proxy 属性，webpack-dev-server 在起服务后，会把匹配的本地请求转到  proxy 里配置的服务器上去请求，通过服务端的转发，实现跨域
-例如：
-
-前端服务端口（dev-server）8080
-联调的后端端口：3000
-
-如果在前端发送请求xhr...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/01</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >
-            
-                <span>webpack 图片处理</span>
-        </a>
-        <div class="abstract-content">
-            
-三种引入图片的方式：
-
-1在 js 中创建 Image 实例引入把图片当做模块引入
-1import logo from "./logo.png"2let img = new Image()3img.src = 'logo'4document.body.appendChild(img)
-
-使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字
-1&#123;2  test: /\.(png|jpg)$/,3  use: [4    &#123;5      loader: 'file-loader',6      options: &#123;7 ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/31</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >
-            
-                <span>webpack 入门</span>
-        </a>
-        <div class="abstract-content">
-            
-
-概念webpack 是一个基于 NodeJS 开发的静态模块打包工具，
-当 webpack 处理应用程序时，它会递归地构建一个依赖关系图( dependency graph )，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle
-代码构建是前端工程化，自动化的体现，把一系列的构建流程由代码去自动实现，提高生产效率，包括如下内容：
-
-代码转换：TS 编译 JS ，SCSS 编译 CSS 等
-文件优化：压缩 js , css , html, 压缩合并图片等
-代码分割：提取多个页面的公共代码，提取首屏不需要执行的代码让其异步加载
-模块合并
-自动刷新：监听本地源...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/Grit-Blog/page/2/">2</a><a class="extend next" rel="next" href="/Grit-Blog/page/2/">NEXT &amp;#62;</a>
-    </nav>
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /Grit-Blog/avatar/rick1.jpg >
-    <div class="profile-name">Grit</div>
-    
-    <div class="profile-signature">
-        ALL IN THE GAME
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:wangyi95821@gmail.com" target="_blank" rel="noopener" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Grit0821" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/Grit-Blog/assets/wechat.JPG" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="//www.zhihu.com/people/wang-yi-60-59-4/activities" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.baidu.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/Grit-Blog/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">

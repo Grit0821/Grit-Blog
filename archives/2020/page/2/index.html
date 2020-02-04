@@ -78,6 +78,8 @@
     <link rel="preload" href= "/Grit-Blog/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= "/Grit-Blog/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -216,10 +218,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -235,34 +235,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/Grit-Blog/intro/wp1.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/Grit-Blog/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Grit's World
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                When you know nothing matters, the universe is yours ....
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -374,293 +361,16 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%887%EF%BC%89%E7%83%AD%E6%9B%B4%E6%96%B0/" >
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >
             
-                <span>webpack 性能优化（7）热更新</span>
+                <span>webpack 简单配置</span>
         </a>
         <div class="abstract-content">
             
 
-热更新 HMR（Hot Module Replacement）热更新指对数据变化的部分进行局部跟新，而不进行页面刷新
-配置
-devServer 中设置 hot 属性 true
-
-使用 webpack.HotModuleReplacementPlugin() 热更新插件
-1let webpack = require('webpack')2module.exports = &#123;3  devServer: &#123;4    hot: ture, // 开启热更新5    contentBase: './dist'6  &#125;,7  plugins: [8    new w...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >
-            
-                <span>webpack 性能优化（6）懒加载</span>
-        </a>
-        <div class="abstract-content">
-            
-
-懒加载实现代码的按需加载
-使用场景index.js 中点击 button ,动态加载 source.js 的内容，读取内容并打印
-1// index.js2let button = document.createElement('button')3button.innerHTML = 'hello'4button.addEventListener('click',()=&gt;&#123;5  // es6 草案中的语法 jsonp实现动态加载文件6  import('./source.js').then(data =&gt; &#123;7    console.log(data....
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >
-            
-                <span>webpack 性能优化（5）抽离公共代码</span>
-        </a>
-        <div class="abstract-content">
-            
-
-使用场景多页应用一般会重复多次使用部分公共代码，这样每次加载单页的时候，就会重复去加载这些公共代码，会造成以下问题：
-
-相同资源重复被加载，浪费用户流量，增加服务器成本
-每个页面需要加载的资源太大，导致网页首屏加载缓慢，影响用户体验
-
-如果将这些公共代码抽取出来，并让浏览器缓存起来，用户在请求资源的时候，可以直接读取缓存中的这些代码，这样就能解决以上问题。
-抽离公共代码入口文件有两个：index.js ，other.js；两者都引用了 a.js 和 b.js，可以将 a 和 b 抽离出来打包成 common.js，然后让 index.js 和 other.js 直接引用 common...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpak-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%884%EF%BC%89tree-shanking-scope-hostig/" >
-            
-                <span>webpak 性能优化（4）tree-shanking&amp;scope-hostig</span>
-        </a>
-        <div class="abstract-content">
-            
-
-两个webpack自带的优化：tree-shaking 和 scope-hosting 都是在生产（production）模式下
-tree-shaking在 mode: production 下，使用 import 引入模块，打包时会忽略模块中没有使用的代码
-举例：
-1// test.js2let sum = function(a,b)&#123;3  return a + b + 'sum'4&#125;56let minus = (a, b)=&gt;&#123;7  return a-b+'minus'8&#125;910export default &#123;sum, mi...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%883%EF%BC%89happypack%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%93%E5%8C%85/" >
-            
-                <span>webpack 性能优化（3）happypack多线程打包</span>
-        </a>
-        <div class="abstract-content">
-            
-
-使用 happypack 模块进行多线程打包，适用于文件较大的情况，本身启动多线程需要耗费时间
-安装 happypack 
-1yarn add happypack -D
-
-修改配置文件，实现多线程打包 js 和 css
-1let path = require('path')2let HtmlWebpackPlugin = require('html-webpack-plugin')3let webpack = require('webpack')4// 多线程打包5let Happypack = require('happypack')67module.exports = &#123...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%882%EF%BC%89DllPlugin-DllReferencePlugin/" >
-            
-                <span>webpack 性能优化（2）DllPlugin&amp;DllReferencePlugin</span>
-        </a>
-        <div class="abstract-content">
-            
-
-场景需求在打包一个 react 的项目的时候，会把 react 和 react-dom 这两个库打包进来。这两个库很大且基本不会变，所以如果每次打包都要打包这两个第三方包的话，浪费时间，消耗性能
-所以可以将 react 和 react-dom 单独打包好，然后动态链接引入即可。第二次打包时，发现react和react-dom已经被打包好了，那么就不需要再打包了，这样就大大提升了性能
-引入在 src 下新建 test.js
-1module.exports = 'wangyi'
-
-创建 webpack.config.react.js 用来打包 test.js
-1//  webpack.c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%881%EF%BC%89/" >
-            
-                <span>webpack 性能优化（1）</span>
-        </a>
-        <div class="abstract-content">
-            
--
-
-noParse 不解析没有依赖的库module 的 noParse 选项可以指定模块不进行依赖库的解析，直接进引入，加快打包速度；适用于引入一些没有依赖的独立的第三方库（例如 jquery）
-正常引用 jquery import jq from jquery 时，会解析 jquery 库有没有依赖的包；设置 noParse 属性后，忽略解析，直接打包
-1module.exports = &#123;2  module:&#123;3    noParse: /jquery/, // jquery中没有依赖，所有不用解析4  &#125;5&#125;
-
-loader 解析时排除和...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" >
-            
-                <span>webpack 解决跨域问题</span>
-        </a>
-        <div class="abstract-content">
-            
-
-跨域问题基于浏览器的同源策略，即协议，域名，端口都一致浏览器才能发送请求，而服务端发送请求没有跨域的问题
-使用 webpack 进行开发解决跨域问题主要有以下方法：
-通过配置服务器代理不能操控后端代码时（比如前后端联调）可用
-在配置文件 webpack.config.js 中添加  devServer 配置，然后配置它的 proxy 属性，webpack-dev-server 在起服务后，会把匹配的本地请求转到  proxy 里配置的服务器上去请求，通过服务端的转发，实现跨域
-例如：
-
-前端服务端口（dev-server）8080
-联调的后端端口：3000
-
-如果在前端发送请求xhr...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/01</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" >
-            
-                <span>webpack 图片处理</span>
-        </a>
-        <div class="abstract-content">
-            
-三种引入图片的方式：
-
-1在 js 中创建 Image 实例引入把图片当做模块引入
-1import logo from "./logo.png"2let img = new Image()3img.src = 'logo'4document.body.appendChild(img)
-
-使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字
-1&#123;2  test: /\.(png|jpg)$/,3  use: [4    &#123;5      loader: 'file-loader',6      options: &#123;7 ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/31</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >
-            
-                <span>webpack 入门</span>
-        </a>
-        <div class="abstract-content">
-            
-
-概念webpack 是一个基于 NodeJS 开发的静态模块打包工具，
-当 webpack 处理应用程序时，它会递归地构建一个依赖关系图( dependency graph )，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle
-代码构建是前端工程化，自动化的体现，把一系列的构建流程由代码去自动实现，提高生产效率，包括如下内容：
-
-代码转换：TS 编译 JS ，SCSS 编译 CSS 等
-文件优化：压缩 js , css , html, 压缩合并图片等
-代码分割：提取多个页面的公共代码，提取首屏不需要执行的代码让其异步加载
-模块合并
-自动刷新：监听本地源...
+单页应用单页，只有一个 index.html
+src 文件下 index.js 引入了 a.js 模块，另外还有一个 b.js，将 index.js 和 a.js 作为入口打包成一个文件 build.js 引入页面内
+1// webpack.config.js2let path  = require('path')3let HtmlWebpackPlugin = require('html-webpack-plugin')4let &#123;CleanWebpackPlugin&#125; = require('clean-webpack-plugin')56module.expo...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -672,115 +382,145 @@ loader 解析时排除和...
         </div>
     </article>
     
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >
+            
+                <span>CommonJS规范和ES6模块规范</span>
+        </a>
+        <div class="abstract-content">
+            
+
+CommonJS规范Node 应用由模块组成，采用 CommonJS 规范
+导出模块采用module.exports,module.exports是一个对象，也是导出的接口
+导入模块采用require引入这个对象
+导出模块1// example.js2let x = 53var addX = function(value)&#123;4    return x + value5&#125;
+
+导出 example.js 中的模块
+1module.exports.x = x2module.exports.addX = addX
+
+或者采用解构赋值
+1module.exports = &...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/09/npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" >
+            
+                <span>npm包管理工具</span>
+        </a>
+        <div class="abstract-content">
+            
+-
+
+npm 介绍什么是 npmnpm 全称 Node Package Manager，是使用 Node.js 写的包管理工具，可以让 JavaScript 开发者分享，复用代码更加方便：
+在程序开发中我们常常需要依赖别人提供的框架，写 js 也不例外。这些可以重复的框架代码被称作包（package）或者模块（module），一个包可以是一个文件夹里放着几个文件，同时有一个叫做 package.json 的文件。
+当我们想要使用开源的 package 时，使用npm install module-name进行下载，下载的代码出现在 node_modules 目录中，我们就可以在本地使用...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "npm/Yarn使用">npm/Yarn使用</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/01/08/hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%86%99%E4%BD%9C/" >
+            
+                <span>hexo博客使用与写作</span>
+        </a>
+        <div class="abstract-content">
+            
+-
+
+创建博客1hexo new "title"
+
+创建一个 title.md 文件，在博客目录 source/_posts 下
+设置Front-matterFront-matter 是文件最上方以 ---分隔的区域，用于指定此文件的变量
+1---2title: web性能优化3date: 2019-12-02 21:43:184categories: 5- 面试6- web性能优化7tags:8- 前端9---
+
+表示分类为面试/web性能优化
+
+
+
+参数
+描述
+
+
+
+title
+标题
+
+
+date
+建立日期
+
+
+updated
+更新日期
+
+
+tags
+标签，没有顺序和层次性
+
+
+c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "写作规范">写作规范</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/Grit-Blog/page/2/">2</a><a class="extend next" rel="next" href="/Grit-Blog/page/2/">NEXT &amp;#62;</a>
+        <a class="extend prev" rel="prev" href="/Grit-Blog/archives/2020/">&amp;#60; PREV</a><a class="page-number" href="/Grit-Blog/archives/2020/">1</a><span class="page-number current">2</span>
     </nav>
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /Grit-Blog/avatar/rick1.jpg >
-    <div class="profile-name">Grit</div>
-    
-    <div class="profile-signature">
-        ALL IN THE GAME
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:wangyi95821@gmail.com" target="_blank" rel="noopener" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Grit0821" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/Grit-Blog/assets/wechat.JPG" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="//www.zhihu.com/people/wang-yi-60-59-4/activities" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.baidu.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/Grit-Blog/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">

@@ -361,6 +361,213 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%887%EF%BC%89%E7%83%AD%E6%9B%B4%E6%96%B0/" >
+            
+                <span>webpack 性能优化（7）热更新</span>
+        </a>
+        <div class="abstract-content">
+            
+
+热更新 HMR（Hot Module Replacement）热更新指对数据变化的部分进行局部跟新，而不进行页面刷新
+配置
+devServer 中设置 hot 属性 true
+
+使用 webpack.HotModuleReplacementPlugin() 热更新插件
+1let webpack = require('webpack')2module.exports = &#123;3  devServer: &#123;4    hot: ture, // 开启热更新5    contentBase: './dist'6  &#125;,7  plugins: [8    new w...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >
+            
+                <span>webpack 性能优化（6）懒加载</span>
+        </a>
+        <div class="abstract-content">
+            
+
+懒加载实现代码的按需加载
+使用场景index.js 中点击 button ,动态加载 source.js 的内容，读取内容并打印
+1// index.js2let button = document.createElement('button')3button.innerHTML = 'hello'4button.addEventListener('click',()=&gt;&#123;5  // es6 草案中的语法 jsonp实现动态加载文件6  import('./source.js').then(data =&gt; &#123;7    console.log(data....
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >
+            
+                <span>webpack 性能优化（5）抽离公共代码</span>
+        </a>
+        <div class="abstract-content">
+            
+
+使用场景多页应用一般会重复多次使用部分公共代码，这样每次加载单页的时候，就会重复去加载这些公共代码，会造成以下问题：
+
+相同资源重复被加载，浪费用户流量，增加服务器成本
+每个页面需要加载的资源太大，导致网页首屏加载缓慢，影响用户体验
+
+如果将这些公共代码抽取出来，并让浏览器缓存起来，用户在请求资源的时候，可以直接读取缓存中的这些代码，这样就能解决以上问题。
+抽离公共代码入口文件有两个：index.js ，other.js；两者都引用了 a.js 和 b.js，可以将 a 和 b 抽离出来打包成 common.js，然后让 index.js 和 other.js 直接引用 common...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpak-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%884%EF%BC%89tree-shanking-scope-hostig/" >
+            
+                <span>webpak 性能优化（4）tree-shanking&amp;scope-hostig</span>
+        </a>
+        <div class="abstract-content">
+            
+
+两个webpack自带的优化：tree-shaking 和 scope-hosting 都是在生产（production）模式下
+tree-shaking在 mode: production 下，使用 import 引入模块，打包时会忽略模块中没有使用的代码
+举例：
+1// test.js2let sum = function(a,b)&#123;3  return a + b + 'sum'4&#125;56let minus = (a, b)=&gt;&#123;7  return a-b+'minus'8&#125;910export default &#123;sum, mi...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%883%EF%BC%89happypack%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%93%E5%8C%85/" >
+            
+                <span>webpack 性能优化（3）happypack多线程打包</span>
+        </a>
+        <div class="abstract-content">
+            
+
+使用 happypack 模块进行多线程打包，适用于文件较大的情况，本身启动多线程需要耗费时间
+安装 happypack 
+1yarn add happypack -D
+
+修改配置文件，实现多线程打包 js 和 css
+1let path = require('path')2let HtmlWebpackPlugin = require('html-webpack-plugin')3let webpack = require('webpack')4// 多线程打包5let Happypack = require('happypack')67module.exports = &#123...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%882%EF%BC%89DllPlugin-DllReferencePlugin/" >
+            
+                <span>webpack 性能优化（2）DllPlugin&amp;DllReferencePlugin</span>
+        </a>
+        <div class="abstract-content">
+            
+
+场景需求在打包一个 react 的项目的时候，会把 react 和 react-dom 这两个库打包进来。这两个库很大且基本不会变，所以如果每次打包都要打包这两个第三方包的话，浪费时间，消耗性能
+所以可以将 react 和 react-dom 单独打包好，然后动态链接引入即可。第二次打包时，发现react和react-dom已经被打包好了，那么就不需要再打包了，这样就大大提升了性能
+引入在 src 下新建 test.js
+1module.exports = 'wangyi'
+
+创建 webpack.config.react.js 用来打包 test.js
+1//  webpack.c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%881%EF%BC%89/" >
+            
+                <span>webpack 性能优化（1）</span>
+        </a>
+        <div class="abstract-content">
+            
+-
+
+noParse 不解析没有依赖的库module 的 noParse 选项可以指定模块不进行依赖库的解析，直接进引入，加快打包速度；适用于引入一些没有依赖的独立的第三方库（例如 jquery）
+正常引用 jquery import jq from jquery 时，会解析 jquery 库有没有依赖的包；设置 noParse 属性后，忽略解析，直接打包
+1module.exports = &#123;2  module:&#123;3    noParse: /jquery/, // jquery中没有依赖，所有不用解析4  &#125;5&#125;
+
+loader 解析时排除和...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" >
             
                 <span>webpack 解决跨域问题</span>
@@ -593,9 +800,102 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 17
         </div>
         <!-- search  -->
         
@@ -615,6 +915,41 @@
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%887%EF%BC%89%E7%83%AD%E6%9B%B4%E6%96%B0/" >webpack 性能优化（7）热更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >webpack 性能优化（5）抽离公共代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%882%EF%BC%89DllPlugin-DllReferencePlugin/" >webpack 性能优化（2）DllPlugin&DllReferencePlugin</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%883%EF%BC%89happypack%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%93%E5%8C%85/" >webpack 性能优化（3）happypack多线程打包</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpak-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%884%EF%BC%89tree-shanking-scope-hostig/" >webpak 性能优化（4）tree-shanking&scope-hostig</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >webpack 性能优化（6）懒加载</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%881%EF%BC%89/" >webpack 性能优化（1）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" >webpack 解决跨域问题</a>
         </li>
     
@@ -625,7 +960,7 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
         </li>
     
     
@@ -635,7 +970,7 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
         </li>
     
     
@@ -719,6 +1054,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
         <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
+    
+        <span class="sidebar-category-name" data-categories="性能优化"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack/性能优化</span>
     
         <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
     
