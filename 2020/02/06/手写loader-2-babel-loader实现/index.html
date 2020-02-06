@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>webpack 图片处理 · Grit&#39;s World</title>
+    <title>手写loader(2) babel-loader实现 · Grit&#39;s World</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/Grit-Blog/" >Grit&#39;s World</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">webpack 图片处理</a>
+                <a href="#" class="post-name">手写loader(2) babel-loader实现</a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            webpack 图片处理
+            手写loader(2) babel-loader实现
             <!-- 404 -->
             
         </h1>
@@ -281,12 +281,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">396</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">400</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/01/31</span>
+                    <span class="post-intro-time">2020/02/06</span>
                     
                     <span class="shareWrapper">
                         <span class="iconfont-archer shareIcon">&#xe71d;</span>
@@ -406,41 +406,32 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <meta name="referrer" content="no-referrer" />
-三种引入图片的方式：
 
-<h2 id="1在-js-中创建-Image-实例引入"><a href="#1在-js-中创建-Image-实例引入" class="headerlink" title="1在 js 中创建 Image 实例引入"></a>1在 js 中创建 Image 实例引入</h2><p>把图片当做模块引入</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">"./logo.png"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">img.src = <span class="string">'logo'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.appendChild(img)</span></pre></td></tr></table></figure>
+<p>babel-loader 用来加载 js 代码并进行转译</p>
+<h1 id="配置-babel-loader"><a href="#配置-babel-loader" class="headerlink" title="配置 babel-loader"></a>配置 babel-loader</h1><p>首先安装 babel 和 babel 的相关模块</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">yarn add @babel/core @babel/preset-env -D</span></pre></td></tr></table></figure>
 
-<p>使用 file-loader，默认在内部生成一张图片到 build 目录下，返回生成的图片名字</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/\.(png|jpg)$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  use: [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">      loader: <span class="string">'file-loader'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">      options: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        esModule: <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">  ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;,</span></pre></td></tr></table></figure>
+<p>@babel/core 是 babel 的核心模块，编译器，用来转译代码</p>
+<p>@babel/preset-env 是 babel 转译代码的预设规则</p>
+<p>然后设置加载 babel-loader 的方式 </p>
+<p>在文件根目录下新建一个文件夹 loaders 用来存放 babel-loader.js</p>
+<p>设置加载 loader 的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  resolveLoader: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    modules:[<span class="string">'node_modules'</span>,path.resolve(<span class="string">'loaders'</span>)]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  devtool: <span class="string">'source-map'</span>, <span class="comment">// 开启源码映射</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">module</span>:&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    rules: [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        test: <span class="regexp">/\.js$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        use: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">          loader: <span class="string">'babel-loader'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">          options:&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">            presets: [<span class="string">'@babel/preset-env'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">          &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">  &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
+<p>设置在使用 loader 的时候先去 node_modules 目录下查找，然后再去 loaders 目录查找</p>
+<h1 id="实现-babel-loader"><a href="#实现-babel-loader" class="headerlink" title="实现 babel-loader"></a>实现 babel-loader</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// babel-loader.js</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> babel = <span class="built_in">require</span>(<span class="string">'@babel/core'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> loaderUtils = <span class="built_in">require</span>(<span class="string">'loader-utils'</span>) <span class="comment">// loader的工具库</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loader</span>(<span class="params">source</span>)</span>&#123; <span class="comment">// this表示loader上下文; source表示源码</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> options = loaderUtils.getOptions(<span class="keyword">this</span>) <span class="comment">//获取loader的options</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> cb = <span class="keyword">this</span>.async()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  babel.transform(source, &#123; <span class="comment">// 用babel转译源码</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    ...options , <span class="comment">// 展开对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    sourceMap: <span class="literal">true</span>, <span class="comment">// 源码映射，webpack同时配置devtool属性</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 设置源码映射的文件名index.js</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    filename: <span class="keyword">this</span>.resourcePath.split(<span class="string">'/'</span>).pop() </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// this.resourcePath表示源码的绝对路径</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// "D:\document\loader-webpack\src\index.js"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">  &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>)</span>&#123;<span class="comment">// 异步回调导出转译结果</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    cb(err, result.code, result.map)  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">  &#125;) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = loader</span></pre></td></tr></table></figure>
 
-
-<h2 id="2在-css-中引入-background-url"><a href="#2在-css-中引入-background-url" class="headerlink" title="2在 css 中引入 background: url( )"></a>2在 css 中引入 background: url( )</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(./logo.png)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<p>然后把 css 文件当做模块引入到入口文件 index.js，import css 文件时候自动调用 file-loader</p>
-<h2 id="3HTML-lt-img-src-quot-quot-alt-quot-quot-gt-引入"><a href="#3HTML-lt-img-src-quot-quot-alt-quot-quot-gt-引入" class="headerlink" title="3HTML &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;引入"></a>3HTML <code>&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;</code>引入</h2><p> HTML<code>&lt;img src=&quot;./log.png&quot;&gt;</code>直接打包的话由于不是模块引入，build 中的 src 路径是错误的</p>
-<p>同时使用 html-withimg-loader 和 file-loader 改变 build 后<code>&lt;img&gt;</code>的 src</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/\.html$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  use: <span class="string">'html-withimg-loader'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/\.(png|jpg)$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  use: [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      loader: <span class="string">'file-loader'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      options: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        esModule: <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">  ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;,</span></pre></td></tr></table></figure>
-
-
-
-<h2 id="使用-url-loader-处理图片，前两种引入方式都适用"><a href="#使用-url-loader-处理图片，前两种引入方式都适用" class="headerlink" title="使用 url-loader 处理图片，前两种引入方式都适用"></a>使用 url-loader 处理图片，前两种引入方式都适用</h2><p>处理图片经常使用 url-loader，当我们的图片小于多少 k 的时候，用 base 64 来转化，否则使用 file-loader 产生真实的图片</p>
-<p>base64 编码可以将一张图片编码成字符串，编码后大小略有增加，但可以减少 http 请求</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  use:&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    loader:<span class="string">'url-loader'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    options: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">      limit: <span class="number">1</span>, <span class="comment">// 超过限制使用 file-loader</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">      outputPath: <span class="string">'./img/'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">      esModule: <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;,</span></pre></td></tr></table></figure>
-
-
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.im/post/5d90cb2c6fb9a04e31420541#heading-9" target="_blank" rel="noopener">webpack loader 从上手到理解系列：url-loader</a></p>
-
+<p><code>let cb = this.async()</code> 是 loader 的原生导出函数，如果是同步，那么loader中会自动调用这个函数，异步的话，需要自己手动调用</p>
+<p>打包后的结果：实现了源码映射</p>
+<img src="https://upload-images.jianshu.io/upload_images/12955144-aedfd99f29118ac0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" height='80%' width="80%">
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="https://github.com/Grit0821/Grit-Blog">Grit</a>
-            <p>原文链接：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/</a>
-            <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">January 31st 2020, 11:43:34 am</a>
-            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/01/31/webpack%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">January 31st 2020, 12:27:06 pm</a>
+            <p>原文链接：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/">https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/</a>
+            <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/">February 6th 2020, 10:50:17 pm</a>
+            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/">February 6th 2020, 10:52:24 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -449,16 +440,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/Grit-Blog/2020/02/01/webpack-%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" title= "webpack 解决跨域问题">
-                    <div class="nextTitle">webpack 解决跨域问题</div>
+                <a href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/" title= "手写loader(1) loader配置">
+                    <div class="nextTitle">手写loader(1) loader配置</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" title= "webpack 简单配置">
-                    <div class="prevTitle">webpack 简单配置</div>
+                <a href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99-loader-3-bannder-loader%E6%B7%BB%E5%8A%A0%E6%97%B6%E9%97%B4%E6%88%B3/" title= "手写 loader(3) bannder-loader添加时间戳">
+                    <div class="prevTitle">手写 loader(3) bannder-loader添加时间戳</div>
                 </a>
             
         </li>
@@ -590,7 +581,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1在-js-中创建-Image-实例引入"><span class="toc-number">1.</span> <span class="toc-text">1在 js 中创建 Image 实例引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2在-css-中引入-background-url"><span class="toc-number">2.</span> <span class="toc-text">2在 css 中引入 background: url( )</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3HTML-lt-img-src-quot-quot-alt-quot-quot-gt-引入"><span class="toc-number">3.</span> <span class="toc-text">3HTML &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-url-loader-处理图片，前两种引入方式都适用"><span class="toc-number">4.</span> <span class="toc-text">使用 url-loader 处理图片，前两种引入方式都适用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置-babel-loader"><span class="toc-number">1.</span> <span class="toc-text">配置 babel-loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现-babel-loader"><span class="toc-number">2.</span> <span class="toc-text">实现 babel-loader</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
