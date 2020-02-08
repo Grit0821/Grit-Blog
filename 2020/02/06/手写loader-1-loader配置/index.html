@@ -281,7 +281,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">552</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">759</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,6 +406,7 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <meta name="referrer" content="no-referrer" />
+-
 
 <h1 id="什么是-loader"><a href="#什么是-loader" class="headerlink" title="什么是 loader"></a>什么是 loader</h1><p>webpack 只能处理 js 模块，如果要处理其他类型的文件，需要使用 loader 进行转换；loader 指用来将一段代码转换成另一段代码的 webpack 加载器，loader 只是一个导出为函数的 JavaScript 模块</p>
 <h1 id="写一个简单的-loader"><a href="#写一个简单的-loader" class="headerlink" title="写一个简单的 loader"></a>写一个简单的 loader</h1><p>loader 就是一个函数，接收源码返回处理后的代码</p>
@@ -421,8 +422,14 @@ height:50vh;
 
 <p><code>modules: [&#39;node_modules&#39;, path.resolve(&#39;loaders&#39;)]</code>表示先去 node_modules 目录寻找，然后再去根目录下的 loaders 目录寻找</p>
 <h1 id="配置多个loader"><a href="#配置多个loader" class="headerlink" title="配置多个loader"></a>配置多个loader</h1><p><code>use:[loader1, loader2, loader3]</code>，loader 执行顺序倒叙：3 - 2 - 1</p>
-<h1 id="loader-的分类"><a href="#loader-的分类" class="headerlink" title="loader 的分类"></a>loader 的分类</h1><p>pre 在前面，normal 在中间，post 在后面；通过<code>enforce: &#39;pre&#39;</code>设置</p>
-<p>确定分类的 loader 顺序： pre - nornal - inline - post，</p>
+<h1 id="loader-的分类"><a href="#loader-的分类" class="headerlink" title="loader 的分类"></a>loader 的分类</h1><p>pre 在前面，normal 在中间，post 在后面；通过<code>enforce: &#39;pre&#39;</code>设置，还有一种特殊的 inline-loader</p>
+<p>确定分类的 loader 顺序： pre - normal - inline - post，</p>
+<h2 id="inline-loader"><a href="#inline-loader" class="headerlink" title="inline-loader"></a>inline-loader</h2><p>inline-loader 是一类特殊的 loader，不通过 webpack.config.js 设置，在引入模块的时候指明使用，inline-loader 多出现于 loader 内部，比如 style-loader 会在自身代码里引入 css-loader</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js use['loader3','loader2','loader1']</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str <span class="built_in">require</span>(<span class="string">'inline-loader!a.js'</span>) <span class="comment">// 引入a.js时使用inline-loader</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 运行顺序</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// loader1, loader2, loader3, loader1, loader2, inline-loader, loader3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前三个是处理index.js，后面四个是处理引入a.js</span></span></pre></td></tr></table></figure>
+
+<p>但是当某个文件想特殊处理，比如上边的 a.js，不想让它用 webpack 配置的 pre 和 normal loader，而只使用 inline-loader，可以设置前缀进行配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// “-!”,不会让文件再去通过pre+normal loader来处理了</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// “!”, 不使用normal-loader</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// “!!”，什么都不要，只使用这个inline loader</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="built_in">require</span>(<span class="string">"!!inline-loader!./a.js"</span>);</span></pre></td></tr></table></figure>
+
 <h1 id="loader的组成"><a href="#loader的组成" class="headerlink" title="loader的组成"></a>loader的组成</h1><p>每个 loader 都由两部分组成：pitchLoader 和 normalLoader（都是 loader 上挂的方法）；pitch 和 normal 的执行顺序相反，当 pitch 没有定义或者没有返回值时，会依次执行 pitch 再获取资源，执行 loader；如果定义的某个 pitch 有返回值则会跳过读取资源和自己的 loader</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loader</span>(<span class="params">source</span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">return</span> source</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">loader.pitch = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">loader.normal = funciton()&#123;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = loader</span></pre></td></tr></table></figure>
 
@@ -446,7 +453,7 @@ height:50vh;
             <p>Author：<a href="https://github.com/Grit0821/Grit-Blog">Grit</a>
             <p>原文链接：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/">https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/</a>
             <p>发表日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/">February 6th 2020, 10:50:24 pm</a>
-            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/">February 6th 2020, 10:52:02 pm</a>
+            <p>更新日期：<a href="https://github.com/Grit0821/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/">February 8th 2020, 4:12:53 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -591,7 +598,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是-loader"><span class="toc-number">1.</span> <span class="toc-text">什么是 loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写一个简单的-loader"><span class="toc-number">2.</span> <span class="toc-text">写一个简单的 loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader-的载入方式"><span class="toc-number">3.</span> <span class="toc-text">loader 的载入方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接写成绝对路径"><span class="toc-number">3.1.</span> <span class="toc-text">直接写成绝对路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-resolveLoader-的-alias-别名"><span class="toc-number">3.2.</span> <span class="toc-text">配置 resolveLoader 的 alias (别名)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-resolveLoader-的-modules"><span class="toc-number">3.3.</span> <span class="toc-text">配置 resolveLoader 的 modules</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置多个loader"><span class="toc-number">4.</span> <span class="toc-text">配置多个loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader-的分类"><span class="toc-number">5.</span> <span class="toc-text">loader 的分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader的组成"><span class="toc-number">6.</span> <span class="toc-text">loader的组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader-的特点"><span class="toc-number">7.</span> <span class="toc-text">loader 的特点</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是-loader"><span class="toc-number">1.</span> <span class="toc-text">什么是 loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写一个简单的-loader"><span class="toc-number">2.</span> <span class="toc-text">写一个简单的 loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader-的载入方式"><span class="toc-number">3.</span> <span class="toc-text">loader 的载入方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接写成绝对路径"><span class="toc-number">3.1.</span> <span class="toc-text">直接写成绝对路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-resolveLoader-的-alias-别名"><span class="toc-number">3.2.</span> <span class="toc-text">配置 resolveLoader 的 alias (别名)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-resolveLoader-的-modules"><span class="toc-number">3.3.</span> <span class="toc-text">配置 resolveLoader 的 modules</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置多个loader"><span class="toc-number">4.</span> <span class="toc-text">配置多个loader</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader-的分类"><span class="toc-number">5.</span> <span class="toc-text">loader 的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#inline-loader"><span class="toc-number">5.1.</span> <span class="toc-text">inline-loader</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader的组成"><span class="toc-number">6.</span> <span class="toc-text">loader的组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader-的特点"><span class="toc-number">7.</span> <span class="toc-text">loader 的特点</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -604,12 +611,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
     
     
     
@@ -899,6 +900,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/" >手写loader(2) babel-loader实现</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-1-loader%E9%85%8D%E7%BD%AE/" >手写loader(1) loader配置</a>
         </li>
     
@@ -909,17 +915,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/" >手写loader(2) babel-loader实现</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-4-file-loader%E5%92%8Curl-loader/" >手写loader(4) file-loader和url-loader</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%882%EF%BC%89DllPlugin-DllReferencePlugin/" >webpack 性能优化（2）DllPlugin&DllReferencePlugin</a>
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >webpack 性能优化（6）懒加载</a>
         </li>
     
     
@@ -934,12 +935,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >webpack 性能优化（6）懒加载</a>
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >webpack 性能优化（5）抽离公共代码</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >webpack 性能优化（5）抽离公共代码</a>
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%882%EF%BC%89DllPlugin-DllReferencePlugin/" >webpack 性能优化（2）DllPlugin&DllReferencePlugin</a>
         </li>
     
     
@@ -964,17 +965,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E5%85%A5%E9%97%A8/" >webpack 入门</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
         </li>
     
     
@@ -998,12 +999,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
         </li>
     
     
@@ -1059,9 +1060,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
     
-        <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
-    
         <span class="sidebar-category-name" data-categories="性能优化"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack/性能优化</span>
+    
+        <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
     
         <span class="sidebar-category-name" data-categories="手写loader"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack/手写loader</span>
     
