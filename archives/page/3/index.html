@@ -361,6 +361,41 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >
+            
+                <span>异步和 Event Loop</span>
+        </a>
+        <div class="abstract-content">
+            
+-
+
+JS 同步与异步同步函数在返回的时候能够拿到执行结果
+异步函数返回的时候，暂时得不到结果，将来通过一定手段（例如回调函数）得到结果，例如 AJAX 操作，定时器，文件异步读取等
+单线程JavaScript 是一门语言，单线程还是多线程由运行环境决定；在 js 的运行环境浏览器或者 Node 中 js 的执行是单线程的
+单线程是指 js 引擎中负责解析执行 js 代码的线程只有一个
+一个浏览器通常由以下几个常驻的线程：
+
+渲染引擎线程，负责页面的渲染
+js 引擎线程，负责 js 的解析和执行
+定时触发器线程，处理 setInterval 和 setTimeout 
+事件触发线程，处...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >
             
                 <span>懒加载和预加载</span>
@@ -801,9 +836,20 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -823,7 +869,22 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">02/17</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/17/mvvm%E5%8E%9F%E7%90%86/" >mvvm原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/08/%E6%89%8B%E5%86%99loader-5-less-loadr-css-loader%E5%92%8Cstyle-loader/" >手写loader(5) less-loadr,css-loader和style-loader</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99-loader-3-bannder-loader%E6%B7%BB%E5%8A%A0%E6%97%B6%E9%97%B4%E6%88%B3/" >手写 loader(3) bannder-loader添加时间戳</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/" >手写loader(2) babel-loader实现</a>
         </li>
     
     
@@ -838,22 +899,12 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99loader-2-babel-loader%E5%AE%9E%E7%8E%B0/" >手写loader(2) babel-loader实现</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/06/%E6%89%8B%E5%86%99-loader-3-bannder-loader%E6%B7%BB%E5%8A%A0%E6%97%B6%E9%97%B4%E6%88%B3/" >手写 loader(3) bannder-loader添加时间戳</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >webpack 性能优化（6）懒加载</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%887%EF%BC%89%E7%83%AD%E6%9B%B4%E6%96%B0/" >webpack 性能优化（7）热更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >webpack 性能优化（5）抽离公共代码</a>
         </li>
     
     
@@ -868,7 +919,7 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%885%EF%BC%89%E6%8A%BD%E7%A6%BB%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81/" >webpack 性能优化（5）抽离公共代码</a>
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/Grit-Blog/2020/02/04/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%886%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD/" >webpack 性能优化（6）懒加载</a>
         </li>
     
     
@@ -893,7 +944,7 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
         </li>
     
     
@@ -903,7 +954,7 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/CommonJS%E8%A7%84%E8%8C%83%E5%92%8CES6%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/" >CommonJS规范和ES6模块规范</a>
+            <span class="archive-post-date">01/21</span><a class="archive-post-title" href= "/Grit-Blog/2020/01/21/webpack-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" >webpack 简单配置</a>
         </li>
     
     
@@ -927,12 +978,12 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" >懒加载和预加载</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/Grit-Blog/2019/12/04/%E5%BC%82%E6%AD%A5%E5%92%8C%20Event-Loop/" >异步和 Event Loop</a>
         </li>
     
     
@@ -946,6 +997,8 @@ HTTP 1.0 默认非 Keep-Alive 模式，每个请求/应答客...
     <div class="sidebar-tags-name">
     
         <span class="sidebar-tag-name" data-tags="写作规范"><span class="iconfont-archer">&#xe606;</span>写作规范</span>
+    
+        <span class="sidebar-tag-name" data-tags="vue"><span class="iconfont-archer">&#xe606;</span>vue</span>
     
         <span class="sidebar-tag-name" data-tags="npm/Yarn使用"><span class="iconfont-archer">&#xe606;</span>npm/Yarn使用</span>
     
@@ -982,9 +1035,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
-    
         <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
+    
+        <span class="sidebar-category-name" data-categories="工具使用"><span class="iconfont-archer">&#xe60a;</span>工具使用</span>
     
         <span class="sidebar-category-name" data-categories="webpack"><span class="iconfont-archer">&#xe60a;</span>工具使用/webpack</span>
     
